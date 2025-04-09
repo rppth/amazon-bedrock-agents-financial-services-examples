@@ -21,7 +21,24 @@ dependencies = [
   "pydantic-settings == 2.8.1",
   "wrapt == 1.17.2",
   "botocore == 1.37.23",
-  "mcp == 1.6.0"
+  "mcp == 1.6.0",
+  # Data handling and analysis
+  "pandas >= 2.0.0",
+  "numpy >= 1.24.0",
+  "yfinance >= 0.2.36",
+  "fredapi >= 0.5.1",  # Federal Reserve Economic Data API
+  # Visualization
+  "matplotlib >= 3.7.0",
+  "seaborn >= 0.13.0",
+  # Machine Learning
+  "scikit-learn >= 1.4.0",
+  "statsmodels >= 0.14.1",
+  "xgboost >= 2.0.0",
+  # HTTP client
+  "httpx >= 0.27.0",
+  "python-dotenv >= 1.0.0",
+  # Technical Analysis
+  "ta >= 0.10.0",  # Technical Analysis library
 ]
 requires-python = ">= 3.11"
 authors = [
@@ -29,7 +46,7 @@ authors = [
 ]
 readme = "README.md"
 license = {text = "MIT"}
-keywords = ["bedrock", "inline", "agents", "SDK"]
+keywords = ["bedrock", "inline", "agents", "SDK", "stock analysis", "machine learning"]
 classifiers = [
     "License :: Apache License 2.0",
     "Programming Language :: Python :: 3.11",

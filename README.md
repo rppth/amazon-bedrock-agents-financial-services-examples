@@ -140,9 +140,6 @@ The `capital_markets` directory includes capital markets related examples:
 - 📈 **FRED API**: For economic data retrieval
 - 🔎 **Perplexity Search**: For historical context and market research
 
-**Managed tools used**:
-- 👨‍💻 **Code Interpreter**: For similarity analysis (in some configurations)
-
 **Key features**:
 - Economic indicator comparison
 - Historical parallel identification

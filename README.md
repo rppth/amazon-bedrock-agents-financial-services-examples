@@ -16,8 +16,7 @@ Examples of Amazon Bedrock Agents for the Financial Services Industry (FSI)
   - [Managed Tools](#-managed-tools)
   - [Insurance Examples](#-insurance)
   - [Capital Markets Examples](#-capital-markets)
-- [MCP Details](#-mcp-details)
-- [Example Applications](#-example-applications)
+
 
 ## 🔧 Installation
 

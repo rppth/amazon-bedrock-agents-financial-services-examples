@@ -44,7 +44,7 @@ class Config:
         # Set up the Perplexity Search server parameters
         self.perplexity_search_params = StdioServerParameters(
             command="docker",
-            args=["run", "-i", "--rm", "-e", "PERPLEXITY_API_KEY", "mcp/perplexity-ask"],
+            args=["run", "-i", "--rm", "-e", f"PERPLEXITY_API_KEY={self.perplexity_api_key}", "mcp/perplexity-ask"],
             env={"PERPLEXITY_API_KEY": self.perplexity_api_key},
         )
         
@@ -57,6 +57,12 @@ class Config:
         env_file = self.current_dir / ".env"
         if env_file.exists():
             load_dotenv(env_file)
+        else:
+            # Check if .env.example exists and provide guidance
+            example_env = self.current_dir / ".env.example"
+            if example_env.exists():
+                print(f"Warning: .env file not found at {env_file}. "
+                      f"Consider copying .env.example to .env and adding your API keys.")
         
         # Also load from repository root .env if it exists
         repo_env_file = self.repo_root / ".env"
@@ -72,6 +78,13 @@ class Config:
         perplexity_env_file = self.repo_root / "mcp_servers" / "perplexity-search" / ".env"
         if perplexity_env_file.exists():
             load_dotenv(perplexity_env_file)
+    
+    def _get_required_env(self, key):
+        """Get a required environment variable."""
+        value = os.environ.get(key)
+        if not value:
+            raise ValueError(f"Environment variable {key} is required but not set in .env file")
+        return value
     
     def _validate_config(self):
         """Perform additional validation of the configuration."""

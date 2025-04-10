@@ -1,4 +1,4 @@
-# 🤖 Amazon Bedrock Agents Examples
+# 🤖 Amazon Bedrock Agents FSI Examples with MCP
 
 <div align="center">
 Examples of Amazon Bedrock Agents for the Financial Services Industry (FSI)

@@ -73,11 +73,15 @@ uv pip install -e .
 Explore the `README.md` for each MCP server to understand how to set up the MCP server. Additionally, you can review the `main.py` to understand each MCP server and how it can be used.
 
 ```bash
-# Explore each MCP server
-cd mcp_servers/python-repl
-# Review the main.py and README.md to set up the MCP server and learn how it works
+# Review the README.md to understand the project architecture.
+cd mcp_servers
+```
 
-# Repeat for other MCP servers
+```bash
+# Review the README.md and main.py to set up the MCP server and learn how it works.
+cd mcp_servers/python-repl
+
+# Repeat for other MCP servers.
 ```
 
 > 💡 Understanding these individual MCPs will make it easier to comprehend the more complex industry-specific examples, which typically use multiple MCPs together.

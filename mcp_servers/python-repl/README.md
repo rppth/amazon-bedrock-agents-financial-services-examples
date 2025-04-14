@@ -23,20 +23,36 @@ This MCP server executes Python code directly on your local system with the same
 
 ## Setup
 
-1. Make sure you have `uv` installed on your system (used for running the server and package installation)
-2. No environment variables or API keys are required
+1. Activate virtual environment from project's root directory.
 
-## Tools
+   ```bash
+   # On macOS and Linux.
+   source .venv/bin/activate
+   ```
+
+   ```bash
+   # On Windows.
+   .venv\Scripts\activate
+   ```
+
+2. Run the example.
+   ```
+   python main.py
+   ```
+
+## Available Tools
 
 ### execute_python
 
 Executes Python code in a persistent environment.
 
 **Parameters:**
+
 - `code` (string, required): Python code to execute
 - `reset` (boolean, optional): If true, resets the session and clears all variables
 
 **Response:**
+
 - Output from the code execution
 - Error messages if the code fails
 - Result of the last expression if there's no output
@@ -46,9 +62,11 @@ Executes Python code in a persistent environment.
 Lists all variables currently defined in the session.
 
 **Parameters:**
+
 - None
 
 **Response:**
+
 - List of variable names and their string representations
 
 ### install_package
@@ -56,69 +74,16 @@ Lists all variables currently defined in the session.
 Installs a Python package using uv.
 
 **Parameters:**
+
 - `package` (string, required): Package name to install (e.g., 'pandas')
 
 **Response:**
+
 - Success or error message
 
-## Usage Examples
+## Example Queries
 
-### Basic Calculation
-```python
-execute_python(code="2 + 2")
-```
-
-### Variable Assignment and Persistence
-```python
-execute_python(code="x = 42")
-execute_python(code="print(x)")  # Will output: 42
-```
-
-### Installing and Using Packages
-```python
-install_package(package="pandas")
-execute_python(code="import pandas as pd\ndf = pd.DataFrame({'A': [1, 2, 3]})\nprint(df)")
-```
-
-### Data Visualization
-```python
-install_package(package="matplotlib")
-execute_python(code="""
-import matplotlib.pyplot as plt
-import numpy as np
-
-x = np.linspace(0, 10, 100)
-y = np.sin(x)
-
-plt.figure(figsize=(8, 4))
-plt.plot(x, y)
-plt.title('Sine Wave')
-plt.savefig('sine_wave.png')
-""")
-```
-
-### Resetting Session
-```python
-execute_python(code="", reset=True)
-```
-
-## Implementation Details
-
-The server maintains a global namespace dictionary that preserves variables between executions. It uses Python's `exec()` and `eval()` functions to execute code and capture the output.
-
-Package installation is handled by spawning a subprocess to run `uv pip install` commands. Imported packages become available immediately in the current session.
-
-## Security Considerations
-
-This server executes arbitrary Python code, which presents security risks. It is recommended to:
-
-1. Run this server in a sandboxed environment
-2. Limit access to the server
-3. Be cautious when executing untrusted code
-4. Consider using container isolation or virtualization for added protection
-
-## Dependencies
-
-- Python 3.10+ 
-- uv
-- MCP library 
+- "Show me an example of using pandas to process the data in Python dictionary."
+- "Create a sample code that executes binary search and list of all variable names."
+- "Can you create an ARIMA model and forecast on synthetic financial data?"
+- "How can I get started with scikit-learn for training classification model?"

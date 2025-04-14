@@ -12,54 +12,42 @@ This example demonstrates how to use Amazon Bedrock Knowledge Bases through an M
 
 ## Setup Instructions
 
-1. Ensure you have the necessary dependencies installed:
+1. Activate virtual environment from project's root directory.
+
+   ```bash
+   # On macOS and Linux.
+   source .venv/bin/activate
    ```
-   pip install boto3 mcp
+
+   ```bash
+   # On Windows.
+   .venv\Scripts\activate
    ```
 
-2. Make sure the `uv` command is installed and available in your PATH.
-   This is required to run the server.
+2. Create a `.env` file with your AWS region and profile.
 
-3. Configure your AWS credentials:
-   - Set up your AWS credentials in `~/.aws/credentials` or environment variables
-   - Make sure the profile has permissions to access Amazon Bedrock Knowledge Bases
-   - Create a `.env` file with your AWS region and profile:
-     ```
-     AWS_REGION=us-east-1
-     AWS_PROFILE=default
-     ```
+   - Create a `.env` file under the MCP server's directory. Refer to the `.env.example` for an example of what variables are needed.
+   - Make sure the profile has permissions to access Amazon Bedrock Knowledge Bases.
 
-4. Run the example:
+3. Run the example.
+
    ```
    python main.py
    ```
 
-## Project Architecture
-
-- **config.py** - Contains all MCP server configuration and environment variable handling
-- **main.py** - InlineAgent setup and execution
-- **server.py** - The MCP server that interfaces with Amazon Bedrock Knowledge Bases
-- **knowledgebases/** - Directory containing the client, discovery, and runtime modules
-
-## Server Configuration
-
-The Bedrock Knowledge Base MCP server uses the `uv` command to run server.py:
-
-```
-uv --directory /path/to/bedrock-kb-search run server.py
-```
-
-This is configured in the `_setup_server_config` method in config.py.
+   If desired, you can change the query from `input_text` parameter.
 
 ## Available Tools
 
 ### Knowledge Base Discovery
+
 - **resource://knowledgebases**
   - Returns a list of available knowledge bases and their data sources
   - MUST be called before querying any knowledge base
   - Provides knowledge base IDs and data source IDs needed for queries
 
 ### Knowledge Base Querying
+
 - **QueryKnowledgeBases(query, knowledge_base_id, reranking=True, reranking_model_name="AMAZON", data_source_ids=None)**
   - Parameters:
     - query: A natural language query to search the knowledge base
@@ -76,19 +64,3 @@ This is configured in the `_setup_server_config` method in config.py.
 - "Search for pricing details in the product information knowledge base"
 - "Look up best practices for building serverless applications"
 - "Find examples of integrating Amazon Bedrock with other AWS services"
-
-## Best Practices for Knowledge Base Searching
-
-- Start by discovering available knowledge bases using resource://knowledgebases
-- Use clear, specific queries for best results
-- Make multiple focused queries instead of one complex query
-- Extract and combine information from multiple results
-- Consider source reliability and relevance scores
-- Try different queries if results aren't relevant
-
-## Customization
-
-To modify the server configuration, edit the `_setup_server_config` method in `config.py`. You can change:
-- The command to run the server (currently defaults to "uv")
-- The directory where the server.py file is located
-- Additional environment variables needed by the server 

@@ -23,8 +23,8 @@ dependencies = [
   "botocore == 1.37.23",
   "mcp == 1.6.0",
   # Data handling and analysis
-  "pandas >= 2.0.0",
-  "numpy >= 1.24.0",
+  "pandas == 2.2.2",
+  "numpy == 1.26.4",
   "yfinance >= 0.2.36",
   "fredapi >= 0.5.1",  # Federal Reserve Economic Data API
   # Visualization

@@ -27,7 +27,7 @@ Examples of Amazon Bedrock Agents for the Financial Services Industry (FSI)
 python --version
 ```
 
-2. Install [uv](https://github.com/astral-sh/uv), a Python package and project manager, if not already installed.
+2. Install [uv](https://github.com/astral-sh/uv), a Python package and project manager, if not already installed. Ensure that they are added to your PATH.
 
 ```bash
 # On macOS and Linux.
@@ -85,6 +85,8 @@ cd mcp_servers/python-repl
 ```
 
 > 💡 Understanding these individual MCPs will make it easier to comprehend the more complex industry-specific examples, which typically use multiple MCPs together.
+
+7.
 
 ## 🏗️ Repository Structure
 
